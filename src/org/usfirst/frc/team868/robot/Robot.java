@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import org.usfirst.frc.team868.robot.commands.ExampleCommand;
+import org.usfirst.frc.team868.robot.subsystems.AngleSubsystem;
 import org.usfirst.frc.team868.robot.subsystems.ExampleSubsystem;
 
 /**
@@ -28,12 +29,18 @@ public class Robot extends IterativeRobot {
      */
     public void robotInit() {
 		oi = new OI();
+		oi.initSDB();
         // instantiate the command used for the autonomous period
         autonomousCommand = new ExampleCommand();
+    }
+    
+    private void updateDash(){
+    	AngleSubsystem.getInstance().updateDashboard();
     }
 	
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
+		updateDash();
 	}
 
     public void autonomousInit() {
@@ -46,6 +53,7 @@ public class Robot extends IterativeRobot {
      */
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
+        updateDash();
     }
 
     public void teleopInit() {
@@ -69,6 +77,7 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+        updateDash();
     }
     
     /**

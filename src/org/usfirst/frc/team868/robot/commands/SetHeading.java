@@ -1,19 +1,19 @@
 package org.usfirst.frc.team868.robot.commands;
 
-import org.usfirst.frc.team868.robot.subsystems.HeadingSubsystem;
+import org.usfirst.frc.team868.robot.subsystems.TurningSubsystem;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class HeadingCommand extends Command {
+public class SetHeading extends Command {
 
-	private HeadingSubsystem subsystem;
-    public HeadingCommand() {
+	private TurningSubsystem subsystem;
+    public SetHeading() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	subsystem = HeadingSubsystem.getInstance();
+    	subsystem = TurningSubsystem.getInstance();
     	requires(subsystem);
     }
 
